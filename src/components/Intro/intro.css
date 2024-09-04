@@ -1,61 +1,126 @@
-#intro{
-    height: calc(100vh - 4rem);
+#intro {
+    position: relative;
+    height: 100vh;
     width: 100vw;
-    max-width: 75rem;
-    margin: 0 auto;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.backgroundContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.backgroundImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%); /* Darken the background for contrast */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    z-index: -1;
+}
+
+.introContent {
+    text-align: center;
+    z-index: 1;
+    padding: 2rem;
+    max-width: 80%;
+    color: #fff;
     position: relative;
 }
 
-.bg{
-    position: absolute;
-    top: -4rem;
-    right: 0;
-    z-index: -1;
+.artistImageContainer {
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.artistImage {
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    border-radius: 50%; /* Circular image */
     object-fit: cover;
-    height: 100vh;
+    border: 5px solid #FFD700; /* Gold border for emphasis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Shadow for depth */
+    transition: transform 0.3s ease;
 }
 
-
-.introContent{
-    height: 100vh;
-    width: 100vw;
-    padding: 2rem;
-    font-size: 3rem;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.artistImageContainer:hover .artistImage {
+    transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-.hello{
-    font-size: 1.75rem;
-    font-weight: 100rem;
-}
-
-.introName{
-    color: yellowgreen;
-   
-}
-
-.introPara{
-    font-size: medium;
+.greeting {
+    font-size: 2.5rem;
     font-weight: 300;
-    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
 }
 
+.artistName {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
 
-@media screen and (max-width:840px) {
-    .bg{
-        right: -10vw;
+.highlight {
+    color: #FFD700; /* Gold highlight */
+}
+
+.description {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+    .greeting {
+        font-size: 2rem;
     }
 
-    .introContent{
-        font-size: 10vw;
+    .artistName {
+        font-size: 3rem;
     }
 
-    .hello{
-        font-size: 4.5vw;
+    .description {
+        font-size: 1.2rem;
     }
-    
+
+    .artistImage {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .greeting {
+        font-size: 1.5rem;
+    }
+
+    .artistName {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .artistImage {
+        width: 120px;
+        height: 120px;
+    }
 }

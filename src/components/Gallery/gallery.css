@@ -1,82 +1,133 @@
-#gallery{
+/* gallery */
+
+#gallery {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #101010 30%, #181818 70%); /* Deep black gradient */
+    color: #e5e5e5; /* Light gray text for readability */
+}
+
+.galleryHeader {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.galleryTitle {
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #b3b3b3; /* Soft gray for a classic look */
+}
+
+.galleryDesc {
+    font-size: 1.3em;
+    color: #c2c2c2; /* Slightly lighter gray for a softer contrast */
+    max-width: 800px;
     margin: 0 auto;
-    min-height: calc(100vh - 4rem);
-    width: 100vw;
-    max-width: 60rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
 }
 
-.galleryTitle{
-    margin: 1rem 0;
-    font-size: 3rem;
-}
-
-.galleryDesc{
-    font-weight: 300;
-    font-size: 1rem;
-    max-width: 45rem;
-}
-
-.galleryImgs{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100vw;
-    max-width: 65rem;
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
 }
 
 .galleryItem {
     position: relative;
-    margin: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #202020; /* Dark background for gallery items */
 }
 
-.galleryImg{
+.galleryImg {
+    width: 100%;
+    height: 250px;
     object-fit: cover;
-    height: 20rem;
-    border-radius: 1rem;
     transition: transform 0.3s ease;
 }
 
-.galleryImg:hover {
+.galleryItem:hover .galleryImg {
     transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
-.imageOverlay {
-    position: absolute;
+.galleryBtn {
+    display: block;
+    margin: 50px auto 0;
+    padding: 14px 28px;
+    background-color: #333333; /* Dark gray button color */
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galleryBtn:hover {
+    background-color: #444444; /* Slightly lighter gray on hover */
+    box-shadow: 0 4px 10px rgba(68, 68, 68, 0.3);
+}
+
+.popupOverlay {
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 16, 16, 0.9); /* Darker overlay for focus */
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 1rem;
+    align-items: center;
+    z-index: 1000;
 }
 
-.galleryItem:hover .imageOverlay {
-    opacity: 1;
+.popupContent {
+    background-color: #1a1a1a; /* Consistent dark background */
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    color: #e5e5e5; /* Light gray text */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.galleryBtn{
-    margin: 3rem 0;
-    padding: 0.5rem 2.5rem;
-    border: none;
-    background: white;
-    border-radius: 2rem;
-    font-size: 1rem;
+.popupImg {
+    max-width: 100%;
+    max-height: 60vh;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
-@media screen and (max-width: 585px) {
-    .galleryImg {
-        height: 48vw;
-    }
+.popupDesc {
+    font-size: 1.3em;
+    line-height: 1.6;
+    color: #cccccc; /* Softer gray for descriptions */
+    text-align: center;
+    max-width: 80%;
+}
+
+.popupClose {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 2.5em;
+    color: #e5e5e5;
+    transition: color 0.3s ease;
+}
+
+.popupClose:hover {
+    color: #f0f0f0; /* Slightly lighter gray on hover */
 }

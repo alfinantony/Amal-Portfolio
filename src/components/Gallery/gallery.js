@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaXmark } from 'react-icons/fa6';
 import './gallery.css';
 import gallery1 from '../../assets/gallery1.jpg';
 import gallery2 from '../../assets/gallery2.jpg';
@@ -10,56 +11,114 @@ import gallery7 from '../../assets/gallery7.jpg';
 import gallery8 from '../../assets/gallery8.jpg';
 
 const images = [
-  { src: gallery1, alt: 'gallery', desc: 'Height:100*100   ' },
-  { src: gallery2, alt: 'gallery', desc: 'Description of image 2' },
-  { src: gallery3, alt: 'gallery', desc: 'Description of image 3' },
-  { src: gallery4, alt: 'gallery', desc: 'Description of image 4' },
-  { src: gallery5, alt: 'gallery', desc: 'Description of image 5' },
-  { src: gallery6, alt: 'gallery', desc: 'Description of image 6' },
-  { src: gallery7, alt: 'gallery', desc: 'Description of image 7' },
-  { src: gallery8, alt: 'gallery', desc: 'Description of image 8' },
-];
+    { 
+      src: gallery1, 
+      alt: 'Gallery Image 1', 
+      desc: `Image` 
+    },
+    { 
+      src: gallery2, 
+      alt: 'Gallery Image 2', 
+      desc: `Image` 
+    },
+    { 
+      src: gallery3, 
+      alt: 'Gallery Image 3', 
+      desc: `Image` 
+    },
+    { 
+      src: gallery4, 
+      alt: 'Gallery Image 4', 
+      desc: `Image`
+    },
+    { 
+      src: gallery5, 
+      alt: 'Gallery Image 5', 
+      desc: `Image` 
+    },
+    { 
+      src: gallery6, 
+      alt: 'Gallery Image 6', 
+      desc: `Image`
+    },
+    { 
+      src: gallery7, 
+      alt: 'Gallery Image 7', 
+      desc: `Image` 
+    },
+    { 
+      src: gallery8, 
+      alt: 'Gallery Image 8', 
+      desc: 'An innovative approach to modern electrical solutions.' 
+    },
+  ];
 
-const Gallery = () => {
+function Gallery() {
   const [showAll, setShowAll] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleClick = () => {
+  const handleSeeMoreClick = () => {
     setShowAll(true);
   };
 
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closePopup = () => {
+    setSelectedImage(null);
+  };
+
   return (
-    <section id='gallery'>
-      <h2 className="galleryTitle">My Gallery</h2>
-      <span className="galleryDesc">
-        During the Middle Ages the word artist already existed in some countries such as Italy, but the meaning was something resembling craftsman, while the word artisan was still unknown.
-      </span>
-
-      <div className="galleryImgs">
-        {images.slice(0, showAll ? images.length : 4).map((image, index) => (
-          <div
-            key={index}
-            className="galleryItem"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            <img src={image.src} alt={image.alt} className="galleryImg" />
-            {hoveredIndex === index && (
-              <div className="imageOverlay">
-                <p>{image.desc}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {!showAll && (
-        <button className="galleryBtn" onClick={handleClick}>
-          See More
-        </button>
-      )}
-    </section>
+    React.createElement('section', { id: 'gallery' },
+      React.createElement('div', { className: 'galleryHeader' },
+        React.createElement('h2', { className: 'galleryTitle' }, 'Projects'),
+        React.createElement('p', { className: 'galleryDesc' }, 
+          'Discover the scope and scale of our engineering expertise through these featured projects.'
+        )
+      ),
+      React.createElement('div', { className: 'galleryGrid' },
+        images.slice(0, showAll ? images.length : 3).map((image, index) => (
+          React.createElement('div', {
+            key: index,
+            className: 'galleryItem',
+            onClick: () => handleImageClick(image)
+          },
+          React.createElement('img', {
+            src: image.src,
+            alt: image.alt,
+            className: 'galleryImg'
+          })
+        )) 
+      )),
+      !showAll && React.createElement('button', {
+        className: 'galleryBtn',
+        onClick: handleSeeMoreClick
+      }, 'See More'),
+      selectedImage && React.createElement('div', {
+        className: 'popupOverlay',
+        onClick: closePopup
+      },
+      React.createElement('div', {
+        className: 'popupContent',
+        onClick: (e) => e.stopPropagation()
+      },
+      React.createElement(FaXmark, {
+        className: 'popupClose',
+        onClick: closePopup
+      }),
+      React.createElement('img', {
+        src: selectedImage.src,
+        alt: selectedImage.alt,
+        className: 'popupImg'
+      }),
+      React.createElement('p', {
+        className: 'popupDesc'
+      }, selectedImage.desc)
+      )
+      )
+    )
   );
-};
+}
 
 export default Gallery;
