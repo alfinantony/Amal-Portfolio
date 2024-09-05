@@ -1,7 +1,7 @@
 import React from 'react';
 import './intro.css';
-import bg from '../../assets/gif.gif'; // Background image
-import artistImg from '../../assets/artistimage.jpg'; // Artist's image
+import bg from '../../assets/bg.jpg'; // Background image
+import artistImg from '../../assets/artistimage.jpeg'; // Artist's image
 
 const Intro = () => {
   return (

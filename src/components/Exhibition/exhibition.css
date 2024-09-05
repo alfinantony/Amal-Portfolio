@@ -1,48 +1,85 @@
+/* Container for the entire section */
 #exhibition {
-    margin: 0 auto;
-    min-height: calc(100vh - 4rem);
-    width: 100vw;
-    max-width: 60rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-  }
-  
+  margin: 0;
+  padding: 4rem 2rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Dark background with slight opacity */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title styling */
+.exhibitionTitle {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff; /* White for contrast */
+  /* text-transform: uppercase; */
+  letter-spacing: 2.5px;
+  text-align: center;
+  border-bottom: 4px solid #FFD700; /* Yellow underline */
+  padding-bottom: 0.6rem;
+}
+
+/* Description text */
+.exhibitionDesc {
+  color: #ddd; /* Lighter gray for readability */
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+/* Image gallery grid */
+.exhibitionImgs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Individual images */
+.exhibitionImg {
+  width: 100%;
+  height: 18rem; /* Fixed height for uniformity */
+  object-fit: cover;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+}
+
+/* Hover effect for images */
+.exhibitionImg:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 8px 16px rgba(255, 215, 0, 0.5); /* Yellow shadow on hover */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
   .exhibitionTitle {
-    margin: 1rem 0;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
-  
   .exhibitionDesc {
-    font-weight: 300;
     font-size: 1rem;
-    max-width: 45rem;
-    text-align: center;
-    margin-bottom: 1rem;
   }
-  
-  .exhibitionImgs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    max-width: 65rem;
-  }
-  
   .exhibitionImg {
-    object-fit: cover;
-    height: 20rem;
-    flex: 1 1 calc(25% - 1rem);
-    border-radius: 1rem;
+    height: 14rem;
   }
-  
-  @media screen and (max-width: 585px) {
-    .exhibitionImg {
-      height: 48vw;
-      flex: 1 1 calc(50% - 1rem);
-    }
+}
+
+@media screen and (max-width: 500px) {
+  .exhibitionTitle {
+    font-size: 2rem;
   }
-  
+  .exhibitionDesc {
+    font-size: 0.9rem;
+  }
+  .exhibitionImg {
+    height: 12rem;
+  }
+}

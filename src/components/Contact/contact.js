@@ -29,26 +29,28 @@ const Contact = () => {
 
   return (
     <section id="contactPage">
-      <div id="contact">
+      <div id="contactContainer">
         <h1 className="contactPageTitle">Contact Me</h1>
-        <span className="contactDesc">Please fill out the form below to discuss the work and for more details</span>
-        <form className='contactForm' ref={form} onSubmit={sendEmail}>
-          <input type="text" className="name" placeholder='Your Name' name='from_name' required></input>
-          <input type="email" className="email" placeholder='Your Email' name='your_email' required></input>
-          <textarea className="msg" name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type='submit' className="submitBtn">Submit</button>
-          <div className="link">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-              <img src={facebookicon} alt="facebook" className="link-icon" />
-            </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-              <img src={instagramicon} alt="instagram" className="link-icon" />
-            </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-              <img src={twittericon} alt="twitter" className="link-icon" />
-            </a>
-          </div>
-        </form>
+        <p className="contactDesc">Please fill out the form below to discuss the work and for more details</p>
+        <div id="contact">
+          <form className='contactForm' ref={form} onSubmit={sendEmail}>
+            <input type="text" className="name" placeholder='Your Name' name='from_name' required />
+            <input type="email" className="email" placeholder='Your Email' name='your_email' required />
+            <textarea className="msg" name="message" rows="5" placeholder="Your Message" required />
+            <button type='submit' className="submitBtn">Submit</button>
+            <div className="link">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src={facebookicon} alt="Facebook" className="link-icon" />
+              </a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src={instagramicon} alt="Instagram" className="link-icon" />
+              </a>
+              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                <img src={twittericon} alt="Twitter" className="link-icon" />
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
